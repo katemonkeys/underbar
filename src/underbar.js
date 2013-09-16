@@ -17,18 +17,20 @@ var _ = { };
   // return just the first element.
   _.first = function(array, n) {
     var newArray = [];
-    if (n == 'undefined' ) { var n=1; } //do if blocks and for loops need semicolons?
-    for (var i=0; i<n; i++) {
-      newArray.push(array[i]);
-    }
-    return newArray;
+    if (n == undefined ) { return array[0]; } //do if blocks and for loops need semicolons?
+    else {for (var i=0; (i<n && i<array.length); i++) {
+            newArray.push(array[i]);
+          }
+          return newArray;
+    };
   };
 
   // Like first, but for the last elements. If n is undefined, return just the
   // last element.
   _.last = function(array, n) {
     var newArray = [];
-    if (n == 'undefined' ) { var n=1; } //do if blocks and for loops need semicolons?
+    if (n == undefined ) { return array[array.length-1]; } //do if blocks and for loops need semicolons?
+    if (n > array.length) {n = array.length; }
     for (var i=array.length-n; i<array.length; i++) {
       newArray.push(array[i]);
     }
@@ -38,6 +40,7 @@ var _ = { };
   // Call iterator(value, key, collection) for each element of collection.
   // Accepts both arrays and objects.
   _.each = function(collection, iterator) {
+
   };
 
   // Returns the index at which value can be found in the array, or -1 if value
@@ -60,6 +63,11 @@ var _ = { };
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
+    var newArray = [];
+    for (i=0; i<array.length; i++) {
+      //Things that exist: .indexOf (which secretly tests if something is in an array without looping, and returns -1 if not)
+      //
+    }
   };
 
 
