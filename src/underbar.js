@@ -16,11 +16,23 @@ var _ = { };
   // Return an array of the first n elements of an array. If n is undefined,
   // return just the first element.
   _.first = function(array, n) {
+    var newArray = [];
+    if (n == 'undefined' ) { var n=1; } //do if blocks and for loops need semicolons?
+    for (var i=0; i<n; i++) {
+      newArray.push(array[i]);
+    }
+    return newArray;
   };
 
   // Like first, but for the last elements. If n is undefined, return just the
   // last element.
   _.last = function(array, n) {
+    var newArray = [];
+    if (n == 'undefined' ) { var n=1; } //do if blocks and for loops need semicolons?
+    for (var i=array.length-n; i<array.length; i++) {
+      newArray.push(array[i]);
+    }
+    return newArray;
   };
 
   // Call iterator(value, key, collection) for each element of collection.
