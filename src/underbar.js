@@ -39,8 +39,24 @@ var _ = { };
 
   // Call iterator(value, key, collection) for each element of collection.
   // Accepts both arrays and objects.
-  _.each = function(collection, iterator) {
+  _.each = function(collection, iterator) { //Ack but there's a capital-I "Iterator" as well which is different?
+      var newArray = [];
+      var newObject = {};
 
+      if (collection instanceof Array) {
+        //then its an array and you can treat it as such. NO YOU CANT USE .isArray that is jQuery!!
+        for (var i=0; i<collection.length; i++) {
+          newArray.push( iterator(collection[i],i,collection ) );
+        }
+        return newArray;
+      }
+      else {
+        //treat it like an object 
+        for (var property in collection) {
+          newArray.push( iterator( collection[property], property, collection ) );
+        }
+        return newArray;
+      }
   };
 
   // Returns the index at which value can be found in the array, or -1 if value
@@ -59,6 +75,10 @@ var _ = { };
   _.reject = function(collection, iterator) {
     // TIP: see if you can re-use _.select() here, without simply
     // copying code in and modifying it
+
+
+
+    //What is "_.select()"??
   };
 
   // Produce a duplicate-free version of the array.
@@ -66,8 +86,9 @@ var _ = { };
     var newArray = [];
     for (i=0; i<array.length; i++) {
       //Things that exist: .indexOf (which secretly tests if something is in an array without looping, and returns -1 if not)
-      //
+      if (array.indexOf(array[i]) != -1) { newArray.push(array[i]); }
     }
+    return newArray;
   };
 
 
