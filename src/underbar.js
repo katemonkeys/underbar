@@ -103,8 +103,10 @@ var _ = { };
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
     var newArray = [];
-    for (i=0; i<array.length; i++) {
-      if (array.indexOf(array[i]) != -1) { newArray.push(array[i]); }
+    for (var i=0; i<array.length; i++) {
+      if (newArray.indexOf(array[i]) == -1) { 
+        newArray.push(array[i]); 
+      }
     }
     return newArray;
   };
@@ -117,11 +119,6 @@ var _ = { };
     // the members, it also maintains an array of results.
   };
 
-  /*
-   * TIP: map is really handy when you want to transform an array of
-   * values into a new array of values. _.pluck() is solved for you
-   * as an example of this.
-   */
 
   // Takes an array of objects and returns and array of the values of
   // a certain property in it. E.g. take an array of people and return
