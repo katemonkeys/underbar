@@ -75,12 +75,9 @@ var _ = { };
 
   // Return all elements of an array that pass a truth test.
   _.filter = function(collection, iterator) {
-    var newArray = [];
-    
-                // can I just say collection.each, is that what the underscore was for?           ****kate****
-                // So the test of truth is hidden in the iterator somewhere? 
-                //The first test is obviously "isEven" and it is tested on collection[i]
+                   // can I just say collection.each, is that what the underscore was for?           ****kate****
 
+    var newArray = [];
     for (var i=0; i<collection.length; i++) {
       if (iterator(collection[i],i,collection )==true) {
         newArray.push(collection[i]);  
@@ -93,7 +90,14 @@ var _ = { };
   _.reject = function(collection, iterator) {
     // TIP: see if you can re-use _.select() here, without simply
     // copying code in and modifying it
-    //What is "_.select()"??                                                                      ****kate****
+    //For "_.select()" I guess you just mean "_.filter" but I don't see how to re-use it???????????                ****kate****
+    var newArray = [];
+    for (var i=0; i<collection.length; i++) {
+      if (iterator(collection[i],i,collection )!=true) {
+        newArray.push(collection[i]);  
+      }
+    }  
+    return newArray;
   };
 
   // Produce a duplicate-free version of the array.
