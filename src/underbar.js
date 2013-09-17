@@ -17,7 +17,7 @@ var _ = { };
   // return just the first element.
   _.first = function(array, n) {
     var newArray = [];
-    if (n == undefined ) { return array[0]; } //do if blocks and for loops need semicolons?
+    if (n == undefined ) { return array[0]; } //do if blocks and for loops need semicolons?                     ****kate****
     else {for (var i=0; (i<n && i<array.length); i++) {
             newArray.push(array[i]);
           }
@@ -29,7 +29,7 @@ var _ = { };
   // last element.
   _.last = function(array, n) {
     var newArray = [];
-    if (n == undefined ) { return array[array.length-1]; } //do if blocks and for loops need semicolons?
+    if (n == undefined ) { return array[array.length-1]; } //do if blocks and for loops need semicolons?        ****kate****
     if (n > array.length) {n = array.length; }
     for (var i=array.length-n; i<array.length; i++) {
       newArray.push(array[i]);
@@ -39,19 +39,19 @@ var _ = { };
 
   // Call iterator(value, key, collection) for each element of collection.
   // Accepts both arrays and objects.
-  _.each = function(collection, iterator) { //Ack but there's a capital-I "Iterator" as well which is different?
+  _.each = function(collection, iterator) { //Ack but there's a capital-I "Iterator" as well which is different?    ****kate****
       var newArray = [];
       var newObject = {};
 
       if (collection instanceof Array) {
-        //then its an array and you can treat it as such. NO YOU CANT USE .isArray that is jQuery!!
+        //then its an array and you can treat it as such. NO YOU CANT USE .isArray that is jQuery!!               ****kate****
         for (var i=0; i<collection.length; i++) {
           newArray.push( iterator(collection[i],i,collection ) );
         }
         return newArray;
       }
       else {
-        //treat it like an object 
+        //treat it like an object                                                                             ****kate****
         for (var property in collection) {
           newArray.push( iterator( collection[property], property, collection ) );
         }
@@ -65,6 +65,8 @@ var _ = { };
     // TIP: Here's an example of a function that needs to iterate, which we've
     // implemented for you. Instead of using a standard `for` loop, though,
     // it uses the iteration helper `each`, which you will need to write.
+
+    //No it wasn't?? Do the comments refer to an old version?                                     ****kate****
     for ( var i=0; i<array.length; i++ ) {
       if (array[i] == target) { return i;}
     }
@@ -73,23 +75,31 @@ var _ = { };
 
   // Return all elements of an array that pass a truth test.
   _.filter = function(collection, iterator) {
+    var newArray = [];
+    
+                // can I just say collection.each, is that what the underscore was for?           ****kate****
+                // So the test of truth is hidden in the iterator somewhere? 
+                //The first test is obviously "isEven" and it is tested on collection[i]
+
+    for (var i=0; i<collection.length; i++) {
+      if (iterator(collection[i],i,collection )==true) {
+        newArray.push(collection[i]);  
+      }
+    }  
+    return newArray;
   };
 
   // Return all elements of an array that don't pass a truth test.
   _.reject = function(collection, iterator) {
     // TIP: see if you can re-use _.select() here, without simply
     // copying code in and modifying it
-
-
-
-    //What is "_.select()"??
+    //What is "_.select()"??                                                                      ****kate****
   };
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
     var newArray = [];
     for (i=0; i<array.length; i++) {
-      //Things that exist: .indexOf (which secretly tests if something is in an array without looping, and returns -1 if not)
       if (array.indexOf(array[i]) != -1) { newArray.push(array[i]); }
     }
     return newArray;
