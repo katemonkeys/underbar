@@ -142,7 +142,14 @@ var _ = { };
 
   // Calls the method named by methodName on each value in the list.
   _.invoke = function(list, methodName, args) {
+    var newResult = [];
+    for (var i=0; i<list.length; i++) {
+      newResult[i] = list[i].methodName;            //testing against 'sort' which I can't seem to call?        ****kate****
+    }
+    return newResult;
   };
+
+
 
   // Reduces an array or object to a single value by repetitively calling
   // iterator(previousValue, item) for each item. previousValue should be
