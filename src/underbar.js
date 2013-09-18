@@ -147,10 +147,12 @@ var _ = { };
         newResult.push(list[i].sort(function(a,b) {return a-b})); 
     }
     return newResult;
-  };                                                                      // Ack I completely forgot everything you said about "Apply"
+  };
+                                                                          // Ack I completely forgot everything you said about "Apply"
                                                                           // and anyway it seems not to be a method??
                                                                           // I had called this to no avail: 
                                                                           // newResult.push([methodName].apply(list[i]);
+
 
   // Reduces an array or object to a single value by repetitively calling
   // iterator(previousValue, item) for each item. previousValue should be
@@ -165,8 +167,21 @@ var _ = { };
   //     return total + number;
   //   }, 0); // should be 6
   //
+
   _.reduce = function(collection, iterator, initialValue) {
+    
+    if (initialValue) {value = initialValue;}
+    else {value = 0;}
+
+    for (var i=0; i<collection.length; i++) {
+       value = [iterator]apply(value, collection[i]);
+    }
+    return value;
   };
+
+
+  //var total = iterator.apply(_.reduce(collection.slice(0,collection.length-1), iterator.apply(), sum),collection[collection.length]);
+
 
   // Determine if the array or object contains a given value (using `===`).
   _.contains = function(collection, target) {
